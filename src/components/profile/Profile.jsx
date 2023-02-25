@@ -1,10 +1,15 @@
 import React from "react";
 import styles from "./Profile.module.css";
-import Postbox from "../postbox/Postbox";
+import ListPost from "../listpost/ListPost";
 import { useState, useEffect } from "react";
 
 function Profile() {
     const [allPost,setAllPost] = useState([])
+    const [postData,setPostData] = useState({
+        user:"Anonimous",
+        content:"",
+    })
+    const [isUpdate,setIsUpdate] = useState({id: null, status: false})
     
     useEffect(() => {
         fetch('/data/posts.json')
@@ -12,6 +17,14 @@ function Profile() {
           .then(data => setAllPost(data.posts))
           .catch(e => console.log(e));
       }, []);
+
+    const handleEdit = (id) => {
+        let data = [...allPost]
+        let foundData = data.find((contact) => contact.id === id);
+        setPostData({ user:"Anonimous", content:foundData.content })
+        setIsUpdate({ id: id, status:true })
+    }
+    
   
     return(
         <>
@@ -24,11 +37,7 @@ function Profile() {
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eligendi suscipit deleniti rem sapiente libero explicabo pariatur quam quia? Assumenda cupiditate inventore adipisci necessitatibus consequatur iste culpa blanditiis nobis suscipit!</p>
             </div>
             <div className={styles.wrapperBoxPost}>
-                {allPost.map((data,index)=>{
-                    if (data){
-                        return <Postbox key={index} date={data["date"]} valueString={data["content"]}/>
-                    }
-                })}
+                <ListPost handleEdit={handleEdit} data={allPost}/>
             </div>
         </div>
         </>

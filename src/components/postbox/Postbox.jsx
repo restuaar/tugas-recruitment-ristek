@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Postbox.module.css";
 
-function Postbox(props) {
+function Postbox(props, handleEdit, handleDelete) {
     return (
         <>
         <div className={styles.boxPost}>
@@ -12,11 +12,11 @@ function Postbox(props) {
                     <p className={styles.boxPostDate}>{props.date}</p>
                 </div>
                 <div className={styles.buttonPost}>
-                    <button type="button"><img src="./assets/img/edit.png" /></button>
-                    <button type="button" onClick=""><img src="./assets/img/delete.png" /></button>
+                    <button type="button" onClick={props.handleEdit}><img src="./assets/img/edit.png" /></button>
+                    <button type="button" onClick={() => handleDelete(props.id)}><img src="./assets/img/delete.png" /></button>
                 </div>
             </div>
-            <div className={styles.Post}><p>{props.valueString}</p></div>
+            <div className={styles.Post}><p>{props.content}</p></div>
         </div>
         </>
     )

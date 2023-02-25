@@ -1,44 +1,71 @@
 import React, { useState, useEffect} from "react";
 import styles from "./Main.module.css";
-import Postbox from "../postbox/Postbox";
+import ListPost from "../listpost/ListPost";
 import { v4 as uuidv4 } from 'uuid';
+
 
 function Main() {
     const [allPost,setAllPost] = useState([])
-    const [textValue,setTextValue] = useState("")
-
+    const [postData,setPostData] = useState({
+        user:"Anonimous",
+        content:"",
+    })
+    const [isUpdate,setIsUpdate] = useState({id: null, status: false})
     useEffect(() => {
         fetch('/data/posts.json')
-          .then(response => response.json())
-          .then(data => setAllPost(data.posts))
-          .catch(e => console.log(e));
-      }, []);
-
+        .then(response => response.json())
+        .then(data => setAllPost(data.posts))
+        .catch(e => console.log(e));
+    }, []);
+    
     const handleAddPost = () => {
         const date = new Date();
         const day = date.getDate();
         const month = date.getMonth() + 1;
         const year = date.getFullYear();
+        let data = [...allPost]
 
-        if(textValue===""){
+
+        if(postData.content===""){
             return
-        } else {
-            const newPost = { id: uuidv4(), user: "Anonymous", content: textValue, date: `${day}/${month}/${year}` };
-            setAllPost([newPost, ...allPost]);
-            setTextValue("");
-
         }
-
+        
+        if(isUpdate.status){
+            data.forEach((post) => {
+                if(post.id === isUpdate.id) {
+                    post.content = postData.content
+                }
+            })
+        } else {
+            const newPost = { id: uuidv4(), user: "Anonymous", content: postData.content, 
+            date: `${day}/${month}/${year}`, isUpdate: false};
+            setAllPost([newPost, ...allPost]);
+            // setAllPost([newPost, ...allPost]);
+        }
+        
+        // INI BUAT NGILANGIN NANTI
+        setIsUpdate({id: null, status: false})
+        setPostData({
+            user:"Anonimous",
+            content:"",
+        });
     }
-
+    
     const handleTextAreaChange = (e) => {
-        setTextValue(e.target.value)
+        let data = [...allPost]
+        data.content = e.target.value
+        setPostData(data)
     }
+    
+    const handleEdit = (id) => {
+        let data = [...allPost]
+        let foundData = data.find((contact) => contact.id === id);
+        setPostData({ user:"Anonimous", content:foundData.content })
+        setIsUpdate({ id: id, status:true })
+    }
+    
+    
 
-    const handleDeletePost = (id) => {
-        const newAllPost = allPost.filter((post) => post.id !== id);
-        setAllPost(newAllPost);
-    }
 
     const STORAGE_KEY = "POST";
 
@@ -54,7 +81,7 @@ function Main() {
             <h1>Welcome Back,<br /><span>@Anonymous</span></h1>
             </div>
             <form>
-                <textarea name="textarea" onChange={handleTextAreaChange} value={textValue}
+                <textarea name="textarea" onChange={handleTextAreaChange} value={postData.content}
                 id="message" cols="30" rows="10" placeholder="What's Happening" maxLength={200}></textarea>
                 <div className={styles.allButton}>
                     <button type="button" onClick={handleAddPost}
@@ -64,12 +91,7 @@ function Main() {
                 </div>
             </form>
             <div className={styles.wrapperBoxPost}>
-                {/* <Postbox valueString="Lorem ipsum dolor sit, amet consectetur adipisicing elit."/> */}
-                {allPost.map((data,index)=>{
-                    if (data){
-                        return <Postbox key={index} date={data["date"]} valueString={data["content"]} handleDeletePost={handleDeletePost}/>
-                    }
-                })}
+                <ListPost handleEdit={handleEdit} data={allPost}/>
             </div>
         </div>
         </>
