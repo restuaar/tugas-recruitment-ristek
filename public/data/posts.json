@@ -1,0 +1,23 @@
+{
+    "posts": [
+      {
+        "id": 1,
+        "user": "Anonimous",
+        "content": "Konten pertama",
+        "date": "2022-02-24"
+      },
+      {
+        "id": 2,
+        "user": "Anonimous",
+        "content": "Konten kedua",
+        "date": "2022-02-25"
+      },
+      {
+        "id": 3,
+        "user": "Anonimous",
+        "content": "Konten ketiga",
+        "date": "2022-02-26"
+      }
+    ]
+  }
+  
