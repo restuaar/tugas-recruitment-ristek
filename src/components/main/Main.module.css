@@ -72,3 +72,97 @@ button img {
     width: 25px;
     margin-left: 5px;
 }
+
+.boxPost {
+    margin: 10px 0 20px 0;
+    color: #fff;
+    background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+    box-shadow: 6.4px 6.4px 19.2px #1D2E4E;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 25px;
+}
+
+.boxPostHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-right: 25px; */
+}
+
+.boxPostProfile {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: red; */
+    width: 300px;
+
+}
+
+.boxPostUser {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 25px;
+}
+
+.boxPostHeader button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.boxPostHeader img{
+    height: 20px;
+}
+.boxPostHeader .boxPostProfile img{
+    height: 40px;
+}
+
+.Post {
+    text-align: left;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24.4916px;
+    line-height: 120%;
+    padding: 0px 20px;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.boxPost {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    padding: 14px 28px;
+    border-radius: 8px;
+    max-width: 600px;
+    min-width: 300px;
+    color: #fff;
+    background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+}
+
+.boxPost textarea {
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
