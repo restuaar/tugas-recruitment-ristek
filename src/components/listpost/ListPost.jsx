@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ListPost.module.css";
+import axios from "axios";
 
-export default function List({ data, handleEdit, handleDelete }) {
+export default function List({ data, handleEdit, handleDelete}) {
+    
+    const [post,setPost] = useState([])
+    
+    const getPost = async() => {
+        const response = await axios.get('http://localhost:5000/users')
+        setPost(response.data)
+    }
+    
+    useEffect(()=>{
+        getPost();
+    },[post])
+
     return (
-        data.map((props) => {
+        post.map((props) => {
             return (
                 <>
                 <div className={styles.boxPost}>
                     <div className={styles.boxPostHeader}>
                         <div className={styles.boxPostProfile}>
                             <img src="./assets/img/profile.png"></img>
-                            <p className={styles.boxPostUser}>Anonymous</p>
+                            <p className={styles.boxPostUser}>{props.user}</p>
                             <p className={styles.boxPostDate}>{props.date}</p>
                         </div>
                         <div className={styles.buttonPost}>

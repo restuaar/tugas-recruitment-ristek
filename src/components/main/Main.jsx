@@ -2,77 +2,99 @@ import React, { useState, useEffect} from "react";
 import styles from "./Main.module.css";
 import ListPost from "../listpost/ListPost";
 import { v4 as uuidv4 } from 'uuid';
-
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Main() {
+    const { id } = useParams()
     const [allPost,setAllPost] = useState([])
     const [postData,setPostData] = useState({
         user:"Anonimous",
         content:"",
     })
-    const [isUpdate,setIsUpdate] = useState({id: null, status: false})
+    const [editData,setEditData] = useState("")
+
     const [modal,setModal] = useState(false)
-    const [editData,setEditData] = useState({
-        user:"Anonimous",
-        content:"",
-    })
-
-    useEffect(() => {
-        fetch('/data/posts.json')
-        .then(response => response.json())
-        .then(data => setAllPost(data.posts))
-        .catch(e => console.log(e));
-    }, []);
+    const [modalDel,setModalDel] = useState(false)
+   
+    const [userId,setUserId] = useState("")
+    const [user,setUser] = useState("")
+    const [content,setContent] = useState("")
+    const [date,setDate] = useState("")
     
-    const handleAddPost = () => {
-        const date = new Date();
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        let data = [...allPost]
-
-
-        if(postData.content===""){
-            return
-        }
+    const navigate = useNavigate();
     
-        const newPost = { id: uuidv4(), user: "Anonymous", content: postData.content, 
-        date: `${day}/${month}/${year}`, isUpdate: false};
-        setAllPost([newPost, ...allPost]);
-        
-        // INI BUAT NGILANGIN NANTI
-        setIsUpdate({id: null, status: false})
-        setPostData({
-            user:"Anonimous",
-            content:"",
-        });
+
+    const getPost = async() => {
+        const response = await axios.get('http://localhost:5000/users')
+        setAllPost(response.data)
     }
 
-    const handleEditPost = () => {
-        const date = new Date();
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        let data = [...allPost]
+    useEffect(()=>{
+        getPost();
+    },[])
 
-        const newDate = `${day}/${month}/${year}`
-
-        if(editData.content===""){
+    useEffect(()=>{
+        if (id === undefined) {
             return
         }
+        getPostById();
+    })
 
-        data.forEach((post) => {
-            if(post.id === isUpdate.id) {
-                post.content = editData.content
-                post.date = newDate
+    const getPostById = async () => {
+
+        const response = await axios.get(`http://localhost:5000/users/${id}`);
+        setUserId(response.data.id);
+        setUser(response.data.user);
+        setContent(response.data.content);
+        setDate(response.data.date);
+      };
+
+    const savePost = async() => {
+        try {
+            const date = new Date();
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+    
+            if(postData.content===""){
+                return
             }
-        })
         
-        setEditData({
-            user:"Anonimous",
-            content:"",
-        })
-        setModal(false)
+            const newPost = { id: uuidv4(), user: "Anonymous", content: postData.content, 
+            date: `${day}/${month}/${year}`, isUpdate: false};
+            await axios.post('http://localhost:5000/users',newPost)
+            navigate("/")
+
+            getPost()
+            setPostData({
+                user:"Anonimous",
+                content:"",
+            });
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const updatePost = async() => {
+        try {
+            const date = new Date();
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+            const newDate = `${day}/${month}/${year}`
+
+            await axios.patch(`http://localhost:5000/users/${id}`,{
+                "id": userId,
+                "user": user,
+                "content": editData,
+                "date": newDate,
+            })
+            navigate('/')
+            setModal(false)
+        } catch (e) {
+            console.log(e)
+        }
     }
     
     const handleTextAreaChange = (e) => {
@@ -84,21 +106,39 @@ function Main() {
     const handleModalChange = (e) => {
         let data = [...allPost]
         data.content = e.target.value
-        setEditData(data)
+        setEditData(data.content)
     }
     
     const handleEdit = (id) => {
         let data = [...allPost]
         let foundData = data.find((post) => post.id === id);
-        setEditData({ user:"Anonimous", content:foundData.content })
-        setIsUpdate({ id: id, status:true })
+        navigate(`/${foundData._id}`)
+        setEditData(foundData.content)
         setModal(true)
     }
 
     const handleDelete = (id) => {
         let data = [...allPost]
-        let filteredData = data.filter((post)=> post.id !== id)
-        setAllPost(filteredData)
+        let foundData = data.find((post) => post.id === id);
+        navigate(`/${foundData._id}`)
+        setEditData(foundData.content)
+        setModalDel(true)
+    }
+
+    const handleCancelDelete = () => {
+        setModalDel(false)
+        navigate('/')
+    }
+
+    const deletePost = async() => {
+        try {
+            await axios.delete(`http://localhost:5000/users/${id}`)
+            getPost()
+            navigate('/')
+            setModalDel(false)
+        } catch (e){
+            console.log(e)
+        }
     }
 
     if(modal) {
@@ -124,7 +164,7 @@ function Main() {
                 <textarea name="textarea" onChange={handleTextAreaChange} value={postData.content}
                 id="message" cols="30" rows="10" placeholder="What's Happening" maxLength={200}></textarea>
                 <div className={styles.allButton}>
-                    <button type="button" onClick={handleAddPost}
+                    <button type="button" onClick={savePost}
                     className={styles.buttonSubmit}><span>Post</span><img src="./assets/img/send.png"/></button>
                     <button type="button" 
                     className={styles.buttonCloseFriend}><span>Edit Close Friends</span><img src="./assets/img/group.png"/></button>
@@ -145,16 +185,30 @@ function Main() {
                         <p className={styles.boxPostUser}>Anonymous</p>
                     </div>
                     <div className={styles.buttonPost}>
-                        <button type="button" onClick={handleEditPost}><img src="./assets/img/edit.png" /></button>
+                        <button type="button" onClick={updatePost}><img src="./assets/img/edit.png" /></button>
                     </div>
                 </div>
-                <textarea name="" onChange={handleModalChange} id="message" cols="30" rows="10" value={editData.content}></textarea>
+                <textarea name="" onChange={handleModalChange} id="message" cols="30" rows="10" value={editData}></textarea>
+            </div>
+        </div>
+        )}
+
+        {modalDel && (
+        <div className={styles.modal}>
+            <div className={styles.overlay}></div>
+            <div className={styles.boxDelete}>
+                <div className={styles.deleteHeader}>
+                    <p>Apakah anda yakin untuk menghapusnya?</p>
+                    <div className={styles.deleteButton}>
+                        <button type="button" onClick={deletePost}>Iya</button>
+                        <button type="button" onClick={handleCancelDelete}>Tidak</button>
+                    </div>
+                </div>
             </div>
         </div>
         )}
         </>
     )
 }
-
 
 export default Main;

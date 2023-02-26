@@ -1,0 +1,24 @@
+###
+GET http://localhost:5000/users
+
+###
+GET http://localhost:5000/users/63fa6f5d412fa8de647520dc
+
+
+POST http://localhost:5000/users
+
+
+###
+PATCH http://localhost:5000/users/63fa6f5d412fa8de647520dc
+Content-Type: application/json
+
+{
+    "id": "asdasdasdasd",
+    "user": "anon",
+    "content": "kwokwowko",
+    "date": "20/20/20",
+    "isUpdate": false
+}
+
+###
+DELETE http://localhost:5000/users/63fa71a0e1f91cfbcf3db148

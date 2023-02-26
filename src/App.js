@@ -20,6 +20,8 @@ function App() {
       <Routes>
         <Route path='/' element={renderPage(<Home/>)}/>
         <Route path='/profile' element={renderPage(<UserProfile/>)}/>
+        <Route path='/:id' element={renderPage(<Home/>)}/>
+        <Route path='/profile/:id' element={renderPage(<UserProfile/>)}/>
       </Routes>
     </Router>
 
