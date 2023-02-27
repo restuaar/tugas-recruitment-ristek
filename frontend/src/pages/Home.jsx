@@ -6,7 +6,7 @@ function Home() {
     <div className='App'>
       <div className='App-header'>
         <Navbar/>
-        <Main/>
+        {/* <Main/> */}
       </div>
     </div>
   );
