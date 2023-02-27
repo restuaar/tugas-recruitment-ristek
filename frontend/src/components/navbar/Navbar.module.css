@@ -15,19 +15,19 @@
         display: flex;
         justify-content: space-between;
     }
-
-    .logoImage {
-        position: relative;
-        left: 1.2em;
-        height: 3em;
-    }
-
+    
+    .logoImage,
     .profileImage {
         position: relative;
         right: 1.2em;
         height: 3em;
+        width: 100%;
     }
-
+    
+    .logoImage {
+        left: 1.2em;
+    }
+    
     .profileText {
         display: none;
     }
