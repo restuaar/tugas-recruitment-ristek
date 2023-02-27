@@ -1,10 +1,327 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-.wrapper {
+.editButton:hover {
+    transition: 200ms;
+    transform: translateY(-3px);
+}
+
+.editButton:active {
+    transition: 200ms;
+    position: relative;
+	top: 2px;
+}
+
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+
+.overlay {
+    background: rgba(49,49,49,0.8);
+}
+.boxPostHeader button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.deleteButton button{
+    font-family: 'Poppins', sans-serif;
+    margin: 10px 20px;
+    border-radius: 4px;
+    min-width: 90px;
+    height: 35px;
+    font-weight: lighter;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    border: 0px white;
+    box-shadow: #000 0px 2px 50px -6px;
+    transition: 100ms;
+}
+
+.deleteButtonNo {
+    background-color: rgb(122, 122, 147);
+    color: #000;
+}
+
+.deleteButtonYes {
+    background-color: rgb(201, 61, 61);
+    color: #fff;
+}
+
+.deleteButtonNo:hover,
+.deleteButtonYes:hover {
+    transition: 200ms;
+    transform: translateY(-3px);
+}
+
+.deleteButtonYes:active {
+    color: rgb(201, 61, 61);
+    background-color: #fff;
+    position: relative;
+	top: 1px;
+}
+
+.deleteButtonNo:active {
+    color: rgb(122, 122, 147);
+    background-color: #1c2127;
+    position: relative;
+	top: 1px;
+} 
+
+
+@media screen and (max-width: 700px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+
+    .profileHeader {
+        margin-top: 2em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .profileHeader img {
+        max-height: 5em;
+    }
+
+    .profileHeader h2 {
+        height: fit-content;
+        color: #88BFE8;
+        font-family: 'Poppins',sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2em;
+    }
+
+    .profileBio{
+        display: flex;
+        margin: auto;
+        max-width: 86%;
+        text-align: justify;
+        font-family: 'Poppins',sans-serif;
+        font-style: normal;
+        font-weight: lighter;
+        font-size: 15px;
+        color: #FFFFFF;
+    }
+
+    .wrapperBoxPost{
+        display: flex;
+        flex-direction: column-reverse;
+        margin: auto;
+        width: 95%;
+    }
+
+    /* ------------- */
+    .boxPost {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 90%;
+        min-width: 60%;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+    }
+
+    .boxPostHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .boxPostProfile img {
+        height: 3em;
+    }
+
+    .boxPostProfile {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 300px;
+    }
+
+    .boxPostUser {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 1em;
+    }
+
+
+    .boxPostHeader button img{
+        height: 1.8em;
+    }
+
+    .boxPost textarea {
+        margin-top: 1em;
+        max-width: 600px;
+        min-width: 300px;
+    }
+
+    .boxDelete {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 90%;
+        min-width: 60%;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);    
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .deleteButton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 657px;
+        box-sizing: border-box;
+    }
+
+    .profileHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .profileHeader img {
+        max-height: 90px;
+    }
+    
+    .profileHeader h2 {
+        width: 215px;
+        height: 69px;
+        color: #88BFE8;
+        font-family: 'Poppins',sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 46px;
+        line-height: 69px;
+        margin-left: 24px;
+    }
+
+    .profileBio{
+        width: 657px;
+        text-align: justify;
+        font-family: 'Poppins',sans-serif;
+        font-style: normal;
+        font-weight: lighter;
+        font-size: 15px;
+        color: #FFFFFF;
+    }
+    
+    .wrapperBoxPost{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    /* ---------- */
+
+    .boxPost {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 600px;
+        min-width: 300px;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+    }
+
+    .boxPostHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 1em 0;
+    }
+
+    .boxPostProfile {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 300px;
+    }
+
+    .boxPostProfile img {
+        height: 3em;
+    }
+
+    .boxPostUser {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 25px;
+    }
+
+    .boxPost textarea {
+        max-width: 600px;
+        min-width: 300px;
+    }
+
+    .boxDelete {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 600px;
+        min-width: 300px;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);    
+        font-family: 'Poppins', sans-serif;
+    }  
+}
+
+
+
+
+
+/* .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* background-color: red; */
     margin: auto;
     width: 657px;
     box-sizing: border-box;
@@ -40,7 +357,6 @@
     font-style: normal;
     font-weight: lighter;
     font-size: 15px;
-    /* line-height: 2px; */
     color: #FFFFFF;
 }
 
@@ -53,14 +369,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-right: 25px; */
 }
 
 .boxPostProfile {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    /* background-color: red; */
     width: 300px;
 }
 
@@ -153,4 +467,4 @@
     box-shadow: 0px 4px 8px #DAEBF3;
     margin-top: 10px;
     border: 0px white;
-}
+} */
