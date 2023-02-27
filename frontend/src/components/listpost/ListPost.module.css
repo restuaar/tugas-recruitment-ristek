@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: column;
     padding: 15px 25px;
+    box-sizing: border-box;
 }
 
 .boxPostHeader {
@@ -24,7 +25,6 @@
     align-items: center;
     /* background-color: red; */
     width: 300px;
-
 }
 
 .boxPostUser {
@@ -32,6 +32,12 @@
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
+    font-style: normal;
+}
+
+.boxPostUser a{
+    text-decoration: none;
+    color: #fff;
 }
 
 .boxPostDate{
@@ -50,25 +56,38 @@
     cursor:pointer;
     overflow: hidden;
     outline:none;
+    border-radius: 50%;
+    padding: 6px 7px;
+    margin-left: 5px;
+    transition: 200ms;
 }
 
-.boxPostHeader img{
-    height: 20px;
-}
-.boxPostHeader .boxPostProfile img{
+.boxPostProfile img{
     height: 40px;
 }
 
-.buttonPost a{
-    margin: 0px 10px;
+.editButton:hover,
+.deleteButton:hover {
+    transition: 200ms;
+    transform: translateY(-3px);
 }
 
-.Post {
+.editButton:active,
+.deleteButton:active {
+    transition: 200ms;
+    position: relative;
+	top: 2px;
+}
+
+.post {
     text-align: left;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-style: normal;
+    width: 100%;
     font-weight: 700;
-    font-size: 24.4916px;
+    font-size: 20px;
     line-height: 120%;
     padding: 0px 20px;
+    max-width: 100%;
+    overflow: hidden;
 }

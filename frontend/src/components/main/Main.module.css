@@ -52,6 +52,7 @@ textarea {
     justify-content: flex-start;
 }
 
+
 form button {
     font-family: 'Poppins', sans-serif;
     border-radius: 10px;
@@ -66,6 +67,21 @@ form button {
     box-shadow: 0px 4px 8px #DAEBF3;
     margin-top: 10px;
     border: 0px white;
+    transition: 100ms;
+}
+
+.buttonSubmit:hover,
+.buttonCloseFriend:hover{
+    transition: 100ms;
+    transform: translateY(-3px);
+}
+
+.buttonSubmit:active,
+.buttonCloseFriend:active{
+    position: relative;
+    background-color: #1c2631;
+	top: 3px;
+    box-shadow: inset 0px 1px 20px 20px #DAEBF3;
 }
 
 button img {
@@ -147,6 +163,17 @@ button img {
     min-width: 300px;
 }
 
+.editButton:hover {
+    transition: 200ms;
+    transform: translateY(-3px);
+}
+
+.editButton:active {
+    transition: 200ms;
+    position: relative;
+	top: 2px;
+}
+
 .overlay {
     background: rgba(49,49,49,0.8);
 }
@@ -171,16 +198,48 @@ button img {
     justify-content: center;
     align-items: center;
 }
+
 .deleteButton button{
     font-family: 'Poppins', sans-serif;
     margin: 10px 20px;
-    border-radius: 10px;
-    min-width: 80px;
-    font-weight: bolder;
+    border-radius: 4px;
+    min-width: 90px;
+    height: 35px;
+    font-weight: lighter;
     font-size: 15px;
     cursor: pointer;
-    background-color: #FFFFFF;
-    box-shadow: 0px 4px 8px #DAEBF3;
     margin-top: 10px;
     border: 0px white;
+    box-shadow: #000 0px 2px 50px -6px;
+    transition: 100ms;
+}
+
+.deleteButtonNo {
+    background-color: rgb(122, 122, 147);
+    color: #000;
+}
+
+.deleteButtonYes {
+    background-color: rgb(201, 61, 61);
+    color: #fff;
+}
+
+.deleteButtonNo:hover,
+.deleteButtonYes:hover {
+    transition: 200ms;
+    transform: translateY(-3px);
+}
+
+.deleteButtonYes:active {
+    color: rgb(201, 61, 61);
+    background-color: #fff;
+    position: relative;
+	top: 1px;
+}
+
+.deleteButtonNo:active {
+    color: rgb(122, 122, 147);
+    background-color: #1c2127;
+    position: relative;
+	top: 1px;
 }

@@ -1,16 +1,17 @@
-import React from "react";
-import styles from "./Profile.module.css";
+import React, { useState, useEffect} from "react";
+import styles from "./Main.module.css";
 import ListPost from "../listpost/ListPost";
-import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import logoProfile from '../../img/profile.png'
-import logoEdit from '../../img/edit.png'
 
-function Profile() {
+function Main() {
     const { id } = useParams()
     const [allPost,setAllPost] = useState([])
+    const [postData,setPostData] = useState({
+        user:"Anonimous",
+        content:"",
+    })
     const [editData,setEditData] = useState("")
 
     const [modal,setModal] = useState(false)
@@ -25,7 +26,7 @@ function Profile() {
     
 
     const getPost = async() => {
-        const response = await axios.get('http://localhost:5000/users')
+        const response = await axios.get('http://localhost:5000/posts')
         setAllPost(response.data)
     }
 
@@ -42,12 +43,39 @@ function Profile() {
 
     const getPostById = async () => {
 
-        const response = await axios.get(`http://localhost:5000/users/${id}`);
+        const response = await axios.get(`http://localhost:5000/posts/${id}`);
         setUserId(response.data.id);
         setUser(response.data.user);
         setContent(response.data.content);
         setDate(response.data.date);
       };
+
+    const savePost = async(e) => {
+        try {
+            e.preventDefault()
+            const date = new Date();
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+    
+            if(postData.content===""){
+                return
+            }
+        
+            const newPost = { id: uuidv4(), user: "Anonymous", content: postData.content, 
+            date: `${day}/${month}/${year}`, isUpdate: false};
+            await axios.post('http://localhost:5000/posts',newPost)
+            navigate("/")
+
+            getPost()
+            setPostData({
+                user:"Anonimous",
+                content:"",
+            });
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     const updatePost = async() => {
         try {
@@ -57,17 +85,24 @@ function Profile() {
             const year = date.getFullYear();
             const newDate = `${day}/${month}/${year}`
 
-            await axios.patch(`http://localhost:5000/users/${id}`,{
+            await axios.patch(`http://localhost:5000/posts/${id}`,{
                 "id": userId,
                 "user": user,
                 "content": editData,
                 "date": newDate,
             })
-            navigate('/profile')
+            navigate('/')
             setModal(false)
+            getPost()
         } catch (e) {
             console.log(e)
         }
+    }
+    
+    const handleTextAreaChange = (e) => {
+        let data = [...allPost]
+        data.content = e.target.value
+        setPostData(data)
     }
 
     const handleModalChange = (e) => {
@@ -79,7 +114,7 @@ function Profile() {
     const handleEdit = (id) => {
         let data = [...allPost]
         let foundData = data.find((post) => post.id === id);
-        navigate(`/profile/${foundData._id}`)
+        navigate(`/${foundData._id}`)
         setEditData(foundData.content)
         setModal(true)
     }
@@ -87,21 +122,21 @@ function Profile() {
     const handleDelete = (id) => {
         let data = [...allPost]
         let foundData = data.find((post) => post.id === id);
-        navigate(`/profile/${foundData._id}`)
+        navigate(`/${foundData._id}`)
         setEditData(foundData.content)
         setModalDel(true)
     }
 
     const handleCancelDelete = () => {
         setModalDel(false)
-        navigate('/profile')
+        navigate('/')
     }
 
     const deletePost = async() => {
         try {
-            await axios.delete(`http://localhost:5000/users/${id}`)
+            await axios.delete(`http://localhost:5000/posts/${id}`)
             getPost()
-            navigate('/profile')
+            navigate('/')
             setModalDel(false)
         } catch (e){
             console.log(e)
@@ -114,18 +149,24 @@ function Profile() {
         document.body.classList.remove('active-modal')
     }
 
-    return(
+    return (
         <>
         <div className={styles.wrapper}>
-            <div className={styles.profileHeader}>
-                <img src="./assets/img/profile.png" alt="" />
-                <h2>@Anonymous</h2>
+            <div className={styles.welcomeText}>
+            <h1>Welcome Back,<br /><span>@Anonymous</span></h1>
             </div>
-            <div className={styles.profileBio}>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi eligendi suscipit deleniti rem sapiente libero explicabo pariatur quam quia? Assumenda cupiditate inventore adipisci necessitatibus consequatur iste culpa blanditiis nobis suscipit!</p>
-            </div>
+            <form onSubmit={savePost}>
+                <textarea name="textarea" onChange={handleTextAreaChange} value={postData.content} required
+                id="message" cols="30" rows="10" placeholder="What's Happening" maxLength={200}></textarea>
+                <div className={styles.allButton}>
+                    <button type="submit"
+                    className={styles.buttonSubmit}><span>Post</span><img src="./assets/img/send.png"/></button>
+                    <button type="button" 
+                    className={styles.buttonCloseFriend}><span>Edit Close Friends</span><img src="./assets/img/group.png"/></button>
+                </div>
+            </form>
             <div className={styles.wrapperBoxPost}>
-                <ListPost handleEdit={handleEdit} data={allPost} handleDelete={handleDelete}/>
+                <ListPost handleEdit={handleEdit} handleDelete={handleDelete} data={allPost}/>
             </div>
         </div>
 
@@ -135,11 +176,11 @@ function Profile() {
             <div className={styles.boxPost}>
                 <div className={styles.boxPostHeader}>
                     <div className={styles.boxPostProfile}>
-                        <img src={logoProfile}></img>
-                        <p className={styles.boxPostUser}>Anonymous</p>
+                        <img src="./assets/img/profile.png"></img>
+                        <p className={styles.boxPostUser}>{user}</p>
                     </div>
                     <div className={styles.buttonPost}>
-                        <button type="button" onClick={updatePost}><img src={logoEdit} /></button>
+                        <button type="button" onClick={updatePost} className={styles.editButton}><img src="./assets/img/edit.png" /></button>
                     </div>
                 </div>
                 <textarea name="" onChange={handleModalChange} id="message" cols="30" rows="10" value={editData}></textarea>
@@ -154,16 +195,15 @@ function Profile() {
                 <div className={styles.deleteHeader}>
                     <p>Apakah anda yakin untuk menghapusnya?</p>
                     <div className={styles.deleteButton}>
-                        <button type="button" onClick={deletePost}>Iya</button>
-                        <button type="button" onClick={handleCancelDelete}>Tidak</button>
+                        <button className={styles.deleteButtonNo} type="button" onClick={handleCancelDelete}>Kembali</button>
+                        <button className={styles.deleteButtonYes} type="button" onClick={deletePost}>Hapus</button>
                     </div>
                 </div>
             </div>
         </div>
         )}
-
         </>
     )
 }
 
-export default Profile;
+export default Main;
