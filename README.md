@@ -11,15 +11,15 @@ Stack pada project ini menggunakan:
 ## Memulai
 
 1. Hal yang perlu di download :
-    * [MongoDB](https://www.mongodb.com/try/download/community) download community server
-    * [Node Js](https://nodejs.org/en/download/)
+    * [MongoDB](https://www.mongodb.com/try/download/community) download community server dan MongoDB Compass.
+    * [Node Js](https://nodejs.org/en/download/).
     * Pull repository ini kedalam komputer kalian.
 2. Untuk set up program maka masuk kedalam folder `frontend` kemudian ketik pada terminal **`npm i`** untuk mendownload semua depedency yang digunakan.
 3. Kemudian masuk juga kedalam folder `backend` kemudian ketik pada terminal **`npm i`** untuk mendownload semua depedency yang digunakan.
 4. Setelah selesai mendownload depency maka untuk menjalan kan project masuk kembali kedalam folder `frontend` dan kemudian ketik pada terminal **`npm start`** atau **`npm run start`**.
 5. Kemudian masuk kedalam folder `backend` untuk menjalankan database maka ketik di terminal **`nodemon index`**.
 
-    > Catatan: Bila dirasa perlu maka ubah url monggoDB pada file .env dalam folder backend
+    > Catatan: Bila dirasa perlu maka ubah url monggoDB pada file .env dapat dicoba secara default yaitu "mongodb://127.0.0.1:27017/" atau "mongodb://localhost:27017/" dalam folder backend dan pada project ini database dijalankan secara local
 
 ## Available Scripts
 
