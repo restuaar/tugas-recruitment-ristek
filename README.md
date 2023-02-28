@@ -19,7 +19,8 @@ Stack pada project ini menggunakan:
 4. Setelah selesai mendownload depency maka untuk menjalan kan project masuk kembali kedalam folder `frontend` dan kemudian ketik pada terminal **`npm start`** atau **`npm run start`**. Project akan langsung muncul pada default browser atau buka [http://localhost:3000](http://localhost:3000) untuk melihat pada browser.
 5. Kemudian masuk kedalam folder `backend` untuk menjalankan database maka ketik di terminal **`nodemon index`**.
 
-    > Catatan: Bila dirasa perlu maka ubah url monggoDB pada file .env dapat dicoba secara default yaitu "mongodb://127.0.0.1:27017/" atau "mongodb://localhost:27017/" dalam folder backend dan pada project ini database dijalankan secara local. Untuk mengecek apakah API berhasil disambungkan maka buka pada browser "localhost:5000" atau "127.0.0.1:5000" maka akan tampil `Cannot GET /`
+    > Catatan: Bila dirasa perlu maka ubah url monggoDB pada file .env. Dalam project ini digunakan url default yaitu "mongodb://127.0.0.1:27017/" atau anda dapat mengganti menjadi "mongodb://localhost:27017/" dalam folder backend/.env dan pada project ini database dijalankan secara local. Untuk mengecek apakah API berhasil disambungkan maka buka pada browser "localhost:5000" atau "127.0.0.1:5000" maka akan tampil `Cannot GET /`
+6. Instalasi sudah dilakukan dan project dapat dijalankan.
 
 ## Available Scripts
 
