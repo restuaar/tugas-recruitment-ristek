@@ -23,7 +23,7 @@ Stack pada project ini menggunakan:
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the frontend directory, you can run:
 
 ### `npm start`
 
