@@ -153,8 +153,8 @@ function Profile() {
                 <div className={styles.deleteHeader}>
                     <p>Apakah anda yakin untuk menghapusnya?</p>
                     <div className={styles.deleteButton}>
-                        <button type="button" onClick={deletePost}>Iya</button>
-                        <button type="button" onClick={handleCancelDelete}>Tidak</button>
+                        <button type="button" onClick={handleCancelDelete} className={styles.deleteButtonNo}>Tidak</button>
+                        <button type="button" onClick={deletePost} className={styles.deleteButtonYes}>Iya</button>
                     </div>
                 </div>
             </div>

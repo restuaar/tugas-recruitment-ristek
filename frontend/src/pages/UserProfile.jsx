@@ -1,5 +1,6 @@
 import Navbar from '../components/navbar/Navbar';
 import Profile from '../components/profile/Profile';
+import './Page.css'
 
 function UserProfile() {
   return (

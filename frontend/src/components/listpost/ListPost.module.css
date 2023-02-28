@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans&display=swap');
 
 .boxPost {
-    margin: 10px 0 20px 0;
+    margin: .6em 0 .6em 0;
+    background-color: red;
     color: #fff;
     background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
     box-shadow: 6.4px 6.4px 19.2px #1D2E4E;
     border-radius: 25px;
     display: flex;
     flex-direction: column;
-    padding: 15px 25px;
+    padding: 1em 1.5em;
     box-sizing: border-box;
 }
 
@@ -16,37 +17,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-right: 25px; */
 }
 
 .boxPostProfile {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    /* background-color: red; */
-    width: 300px;
-}
-
-.boxPostUser {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    font-style: normal;
-}
-
-.boxPostUser a{
-    text-decoration: none;
-    color: #fff;
-}
-
-.boxPostDate{
-    font-family: 'Poppins',sans-serif;
-    font-style: normal;
-    font-weight: lighter;
-    padding-top: 3px;
-    font-size: 11px;
-    line-height: 25px;
+    width: 80%;
 }
 
 .boxPostHeader button {
@@ -63,7 +40,7 @@
 }
 
 .boxPostProfile img{
-    height: 40px;
+    height: 3em;
 }
 
 .editButton:hover,
@@ -76,18 +53,98 @@
 .deleteButton:active {
     transition: 200ms;
     position: relative;
-	top: 2px;
+    top: 2px;
 }
 
-.post {
-    text-align: left;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-style: normal;
-    width: 100%;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 120%;
-    padding: 0px 20px;
-    max-width: 100%;
-    overflow: hidden;
+@media screen and (max-width: 740px) {
+    .boxPostProfile {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 80%;
+    }
+
+    .boxPostProfile img {
+        position: relative;
+        top: .3em;
+    }
+
+    .boxPostUser {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.1em;
+        margin-left: 1em;
+    }
+
+    .boxPostUser a{
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .boxPostDate{
+        font-family: 'Poppins',sans-serif;
+        font-style: normal;
+        font-weight: lighter;
+        padding-top: 3px;
+        font-size: 11px;
+        position: relative;
+        top: 1.6em;
+        right: 9.65em;
+    }
+    
+    .post {
+        text-align: justify;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-style: normal;
+        width: 100%;
+        font-weight: 700;
+        font-size: 1.2em;
+        line-height: 120%;
+
+    }
+}   
+
+@media screen and (min-width: 741px) {
+    .boxPostProfile {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 300px;
+    }
+
+    .boxPostUser {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        font-style: normal;
+    }
+    
+    .boxPostUser a{
+        text-decoration: none;
+        color: #fff;
+    }
+    
+    .boxPostDate{
+        font-family: 'Poppins',sans-serif;
+        font-style: normal;
+        font-weight: lighter;
+        padding-top: 3px;
+        font-size: 11px;
+        line-height: 25px;
+    }
+    
+    .post {
+        text-align: justify;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-style: normal;
+        width: 90%;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 120%;
+        margin-left: 1.2em;
+        max-width: 100%;
+        overflow: hidden;
+    }
 }

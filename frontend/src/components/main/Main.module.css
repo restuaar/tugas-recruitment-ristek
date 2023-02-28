@@ -1,73 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* background-color: red; */
-    margin: auto;
-    width: 657px;
-    box-sizing: border-box;
-}
-
-.welcomeText {
-    display: flex;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-    padding: 5px 0px 0px 0px;
-}
-
 .welcomeText span{
     color: #88BFE8;
-}
-
-form {
-    max-width: 100%;
-    display: flex;
-    flex-direction: row;
-    padding: 5px 0;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-textarea {
-    font-family: 'Poppins', sans-serif;
-    border: 2px solid #88BFE8;
-    width: 50%;
-    height: 120px;
-    background-color: #01162D;
-    outline: none;
-    padding: 19px 26px 10px 26px;
-    color: white;
-    font-size: 16px;
-    resize: none;
-    border-radius: 10px;
-    text-overflow: clip;
-}
-
-.allButton {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 40%;
-    justify-content: flex-start;
-}
-
-
-form button {
-    font-family: 'Poppins', sans-serif;
-    border-radius: 10px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bolder;
-    font-size: 15px;
-    cursor: pointer;
-    background-color: #FFFFFF;
-    box-shadow: 0px 4px 8px #DAEBF3;
-    margin-top: 10px;
-    border: 0px white;
-    transition: 100ms;
 }
 
 .buttonSubmit:hover,
@@ -78,89 +12,15 @@ form button {
 
 .buttonSubmit:active,
 .buttonCloseFriend:active{
-    position: relative;
-    background-color: #1c2631;
-	top: 3px;
-    box-shadow: inset 0px 1px 20px 20px #DAEBF3;
+position: relative;
+background-color: #1c2631;
+top: 3px;
+box-shadow: inset 0px 1px 20px 20px #DAEBF3;
 }
 
 button img {
     width: 25px;
     margin-left: 5px;
-}
-
-.wrapperBoxPost{
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-.boxPostHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin-right: 25px; */
-}
-
-.boxPostProfile {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    /* background-color: red; */
-    width: 300px;
-
-}
-
-.boxPostUser {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    margin-left: 25px;
-}
-
-.boxPostHeader button {
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    outline:none;
-}
-
-.boxPostHeader img{
-    height: 20px;
-}
-.boxPostHeader .boxPostProfile img{
-    height: 40px;
-}
-
-.modal, .overlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-}
-
-.boxPost {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    padding: 14px 28px;
-    border-radius: 8px;
-    max-width: 600px;
-    min-width: 300px;
-    color: #fff;
-    background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
-}
-
-.boxPost textarea {
-    max-width: 600px;
-    min-width: 300px;
 }
 
 .editButton:hover {
@@ -174,29 +34,27 @@ button img {
 	top: 2px;
 }
 
+.modal, .overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+
 .overlay {
     background: rgba(49,49,49,0.8);
 }
-
-.boxDelete {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    padding: 14px 28px;
-    border-radius: 8px;
-    max-width: 600px;
-    min-width: 300px;
-    color: #fff;
-    background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);    
-    font-family: 'Poppins', sans-serif;
-}
-
-.deleteButton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.boxPostHeader button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline:none;
 }
 
 .deleteButton button{
@@ -242,4 +100,284 @@ button img {
     background-color: #1c2127;
     position: relative;
 	top: 1px;
+} 
+
+@media screen and (max-width: 700px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        box-sizing: border-box;
+        width: 100vw;
+    }
+
+    .welcomeText {
+        display: flex;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        padding: 5px 0px 0px 0px;
+        text-align: left;
+        align-self: flex-start;
+        margin-left: 2.4em;
+    }
+
+    form {
+        min-width: 90%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 1.2em;
+    }
+
+    textarea {
+        font-family: 'Poppins', sans-serif;
+        border: 2px solid #88BFE8;
+        background-color: #01162D;
+        outline: none;
+        color: white;
+        resize: none;
+        border-radius: 10px;
+        text-overflow: clip;
+        padding: 1em;
+        max-height: 13vh;
+    }
+
+    .allButton {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+
+    form button {
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bolder;
+        font-size: 1em;
+        cursor: pointer;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 8px #DAEBF3;
+        margin-top: 1em;
+        border: 0px solid white;
+        transition: 100ms;
+    }
+
+    .wrapperBoxPost{
+        display: flex;
+        flex-direction: column-reverse;
+        width: 90%;
+    }
+
+    /* ------------------------------ */
+
+    .boxPost {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 90%;
+        min-width: 60%;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+    }
+
+    .boxPostHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .boxPostProfile img {
+        height: 3em;
+    }
+
+    .boxPostProfile {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 300px;
+    }
+
+    .boxPostUser {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 1em;
+    }
+
+
+    .boxPostHeader button img{
+        height: 1.8em;
+    }
+
+    .boxPost textarea {
+        margin-top: 1em;
+        max-width: 600px;
+        min-width: 300px;
+    }
+
+    .boxDelete {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 90%;
+        min-width: 60%;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);    
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .deleteButton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    .wrapper {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 50vw;
+        box-sizing: border-box;
+    }
+
+    .welcomeText {
+        display: flex;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+        padding: 5px 0px 0px 0px;
+    }
+
+    form {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 5px 0;
+        justify-content: space-between;
+        margin-bottom: 1.2em;
+    }
+
+    textarea {
+        font-family: 'Poppins', sans-serif;
+        border: 2px solid #88BFE8;
+        width: 50%;
+        height: 120px;
+        background-color: #01162D;
+        outline: none;
+        padding: 19px 26px 10px 26px;
+        color: white;
+        font-size: 16px;
+        resize: none;
+        border-radius: 10px;
+        text-overflow: clip;
+        padding: 1em
+    }
+
+    .allButton {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 40%;
+        justify-content: flex-start;
+    }
+
+    form button {
+        font-family: 'Poppins', sans-serif;
+        border-radius: 10px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bolder;
+        font-size: 15px;
+        cursor: pointer;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 8px #DAEBF3;
+        margin-top: 10px;
+        border: 0px white;
+        transition: 100ms;
+    }
+
+    .wrapperBoxPost{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    /* ----------- */
+
+    .boxPost {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 600px;
+        min-width: 300px;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);
+    }
+
+    .boxPostHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 1em 0;
+    }
+
+    .boxPostProfile {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 300px;
+    }
+
+    .boxPostProfile img {
+        height: 3em;
+    }
+
+    .boxPostUser {
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        margin-left: 25px;
+    }
+
+    .boxPost textarea {
+        max-width: 600px;
+        min-width: 300px;
+    }
+
+    .boxDelete {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1.4;
+        padding: 14px 28px;
+        border-radius: 8px;
+        max-width: 600px;
+        min-width: 300px;
+        color: #fff;
+        background-image: linear-gradient(180deg, #213356 0%, #0C182F 100%);    
+        font-family: 'Poppins', sans-serif;
+    }  
 }

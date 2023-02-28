@@ -1,57 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-.wrapper {
-    margin: 0 0;
-    height: 75px;
-    display: flex;
-    color: white;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
+
+@media screen and (max-width: 740px) {
+    .wrapper {
+        display: flex;
+        min-height: 11vh;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .logoContainer{
+        flex-grow: 2;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .logoImage,
+    .profileImage {
+        position: relative;
+        right: 1.2em;
+        height: 3em;
+        width: 100%;
+    }
+    
+    .logoImage {
+        left: 1.2em;
+    }
+    
+    .profileText {
+        display: none;
+    }
+
+    .logoText {
+        position: relative;
+        margin: auto;
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.8em;
+        font-feature-settings: 'ss01' on;
+        color: #FFFFFF;
+    }
 }
 
-.logoContainer {
-    margin-left: 30px;
-    display: flex;
-    align-items: center;
-}
+@media screen and (min-width: 741px){
+    .wrapper {
+        margin: 0 0;
+        height: 10vh;
+        display: flex;
+        color: white;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+    }
 
-.logoText {
-    width: 212px;
-    height: 40px;
-    margin-left: 20px;
-    text-decoration: none;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 26.9538px;
-    line-height: 40px;
-    font-feature-settings: 'ss01' on;
-    color: #FFFFFF;
-}
+    .logoContainer {
+        margin-left: 2em;
+        display: flex;
+        align-items: center;
+        margin-top: 5vh;
+    }
+    
+    .logoText {
+        margin-left: 1.15em;
+        text-decoration: none;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 1.8em;
+        color: #FFFFFF;
+    }
 
-.logoImage {
-    width: 30.94px;
-    height: 50px;
-}
+    .logoImage {
+        height: 4em;
+    }
+    
+    .profileContainer {
+        margin-top: 5vh;
+        margin-right: 2em;
+        display: flex;
+        align-items: center;
+    }
 
-.profileContainer {
-    margin-right: 50px;
-    display: flex;
-    align-items: center;
-}
+    .profileImage {
+        height: 4em;
+    }
 
-.profileImage {
-    /* width: 30.94px; */
-    height: 45px;
-}
-
-.profileText {
-    /* height: 22px; */
-    font-style: normal;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 17.9692px;
-    line-height: 120%;
-    color: #FFFFFF;
-    margin-left: 20px;
+    .profileText {
+        font-style: normal;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.3em;
+        line-height: 120%;
+        color: #FFFFFF;
+        margin-left: 1em;
+    }
 }
