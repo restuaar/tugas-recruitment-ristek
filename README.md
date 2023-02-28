@@ -1,6 +1,25 @@
-# Getting Started with Create React App
+# Tugas Recruitment Web Development RISTEK
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Stack pada project ini menggunakan:
+* MongoDB
+* Express
+* React JS
+* Node JS
+
+## Memulai
+
+1. Hal yang perlu di download :
+    * [MongoDB](https://www.mongodb.com/try/download/community) download community server
+    * [Node Js](https://nodejs.org/en/download/)
+    * Pull repository ini kedalam komputer kalian.
+2. Untuk set up program maka masuk kedalam folder `frontend` kemudian ketik pada terminal **`npm i`** untuk mendownload semua depedency yang digunakan.
+3. Kemudian masuk juga kedalam folder `backend` kemudian ketik pada terminal **`npm i`** untuk mendownload semua depedency yang digunakan.
+4. Setelah selesai mendownload depency maka untuk menjalan kan project masuk kembali kedalam folder `frontend` dan kemudian ketik pada terminal **`npm start`** atau **`npm run start`**.
+5. Kemudian masuk kedalam folder `backend` untuk menjalankan database maka ketik di terminal **`nodemon index`**.
+
+    > Catatan: Bila dirasa perlu maka ubah url monggoDB pada file .env dalam folder backend
 
 ## Available Scripts
 
