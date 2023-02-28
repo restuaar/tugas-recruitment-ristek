@@ -2,11 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import UserRoute from "./routes/PostRoute.js";
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 const app = express();
 mongoose.set('strictQuery',true)
-mongoose.connect('mongodb://127.0.0.1:27017/fullstack_db',{
+mongoose.connect(process.env.MONGODB_URL,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
